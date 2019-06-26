@@ -12,7 +12,7 @@ export class MapaComponent implements OnInit {
 
   lat: number = -33.4372;
   lng: number = -70.6506;
-
+  //inyectamos SnackBar en el constructor
   constructor(public snackBar: MatSnackBar) {
     if (localStorage.getItem('marcadores')) {
       this.marcadores = JSON.parse(localStorage.getItem('marcadores'));
@@ -25,13 +25,13 @@ export class MapaComponent implements OnInit {
     const nuevoMarcador = new Marcador(coords.lat, coords.lng);
     this.marcadores.push(nuevoMarcador);
     this.guardarStorage();
-    this.snackBar.open('tienda agregada', 'cerrar');
+    this.snackBar.open('tienda agregada', 'cerrar', { duration: 3000 });
   }
 
   borrarMarcador(i: number) {
     this.marcadores.splice(i, 1);
     this.guardarStorage();
-    this.snackBar.open('tienda eliminada', 'cerrar');
+    this.snackBar.open('tienda eliminada', 'cerrar', { duration: 3000 });
   }
 
   guardarStorage() {
