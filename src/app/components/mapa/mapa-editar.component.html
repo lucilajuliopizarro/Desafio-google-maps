@@ -1,3 +1,12 @@
-<p>
-  mapa-editar works!
-</p>
+<form [formGroup]="forma">
+    <mat-form-field>
+        <input matInput placeholder="Titulo" formControlName="titulo">
+    </mat-form-field>
+
+    <mat-form-field>
+        <textarea row="3" matInput placeholder="descripcion" formControlName="desc"></textarea>
+    </mat-form-field>
+    <!--guardar cambios se implementa en mapa-editar.component.ts-->
+    <button (click)="guardarCambios()" mat-flat-button color="primary">Editar</button>
+    <button (click)="onNoClick()" mat-flat-button color="warn">cancelar</button>
+</form>
