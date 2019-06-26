@@ -8,9 +8,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MapaComponent } from './components/mapa/mapa.component';
 import { AgmCoreModule } from '@agm/core';
+import { MapaEditarComponent } from './components/mapa/mapa-editar.component';
 
 @NgModule({
-  declarations: [AppComponent, MapaComponent],
+  entryComponents: [MapaEditarComponent],
+  declarations: [AppComponent, MapaComponent, MapaEditarComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
