@@ -13,8 +13,9 @@ export class MapaComponent implements OnInit {
   lng: number = 7.809007;
 
   constructor() {
-    const nuevoMarcadores = new Marcador(51.678418, 7.809007);
-    this.marcadores.push(nuevoMarcadores);
+    if (localStorage.getItem('marcadores')) {
+      this.marcadores = JSON.parse(localStorage.getItem('marcadores'));
+    }
   }
 
   ngOnInit() {}
@@ -22,5 +23,10 @@ export class MapaComponent implements OnInit {
     const coords: { lat: number; lng: number } = evento.coords;
     const nuevoMarcador = new Marcador(coords.lat, coords.lng);
     this.marcadores.push(nuevoMarcador);
+    this.guardarStorage();
+  }
+
+  guardarStorage() {
+    localStorage.setItem('marcadores', JSON.stringify(this.marcadores));
   }
 }
