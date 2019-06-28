@@ -27,7 +27,7 @@ export class MapaEditarComponent implements OnInit {
   ngOnInit() {}
   //aquí se implementa el guardar de mapa-editar.component.html
   guardarCambios() {
-    console.log('!!');
+    this.dialogRef.close(this.forma.value);
   }
   onNoClick(): void {
     this.dialogRef.close();

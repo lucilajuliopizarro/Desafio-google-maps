@@ -42,7 +42,13 @@ export class MapaComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      console.log(result);
+      if (!result) {
+        return;
+      }
+      marcador.titulo = result.titulo;
+      marcador.desc = result.desc;
+      this.guardarStorage();
+      this.snackBar.open('tienda actualizada', 'cerrar', { duration: 3000 });
     });
   }
   guardarStorage() {
