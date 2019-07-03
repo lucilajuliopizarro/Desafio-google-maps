@@ -3,7 +3,7 @@ import { Marcador } from 'src/app/classes/marcadores.class';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MapaEditarComponent } from './mapa-editar.component';
-
+import { marcadores } from './../../../firebase/functions';
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
@@ -48,10 +48,12 @@ export class MapaComponent implements OnInit {
       marcador.titulo = result.titulo;
       marcador.desc = result.desc;
       this.guardarStorage();
-      this.snackBar.open('tienda actualizada', 'cerrar', { duration: 3000 });
+      this.snackBar.open('tienda actualizada ', 'cerrar', { duration: 3000 });
     });
   }
   guardarStorage() {
     localStorage.setItem('marcadores', JSON.stringify(this.marcadores));
+    console.log(this.marcadores);
+    marcadores(this.marcadores);
   }
 }
